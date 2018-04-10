@@ -19,6 +19,15 @@ class Game
     @board.display
   end
 
+  def current_player
+    board.turn_count.odd? ? player_2 : player_1
+  end
+
+  def won?
+    WIN_COMBINATIONS.each do |combination|
+      if @board.cells[combination[0]] == @board.cells[combination[1]] && @board.cells[combination[1]] == @board.cells[combination[2]] && @board.cells[combination[0] + 1]
+
+      end
 
 
 
