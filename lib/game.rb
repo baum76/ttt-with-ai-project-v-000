@@ -1,5 +1,5 @@
 class Game
-  attr_accessor :board, :player_1, :player_2
+  attr_accessor :board, :player_1, :player_2, :winner, :user_input
 
   WIN_COMBINATIONS = [
     [0,1,2],
@@ -52,12 +52,19 @@ class Game
     @user_input = current_player.move(@board)
     if @board.valid_move?(@user_input)
       @board.update(@user_input, current_player)
-    else  
+    else
       puts "Please enter a number 1-9:"
       @board.display
       turn
     end
     @board.display
+  end
+
+  def play
+    turn until over?
+    if won?
+      puts "congratulations #{winner}!"
+    end
   end
 
 
